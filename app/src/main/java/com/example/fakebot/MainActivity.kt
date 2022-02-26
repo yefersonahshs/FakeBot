@@ -35,16 +35,27 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-
-
-
-    binding.fbRecycler.adapter=adapter
-
     adapter.onItemClickListener={
         Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
     }
-
-
-
+        setupSendMessage()
 }
+
+    private fun setupSendMessage() {
+
+        binding.sendButton.setOnClickListener {
+        val message = binding.questionText.text.toString()
+        if (message.isEmpty()){
+            Toast.makeText(this,"Debes Ingresar un Mensaje Porfa", Toast.LENGTH_SHORT).show()
+
+        }else{
+            val chatMessage = ChatMessage(message,true)
+            viewModel.addMessage(chatMessage)
+            viewModel.createResponse()
+            binding.questionText.setText("")
+        }
+    }
+
+    }
+
 }

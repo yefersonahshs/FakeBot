@@ -1,6 +1,7 @@
 package com.example.fakebot
 
 import android.content.Context
+import android.text.style.BackgroundColorSpan
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -52,10 +53,12 @@ class FbAdapter(private val context: Context): ListAdapter<ChatMessage, FbAdapte
             if (chatMessage.isQuestion) {
 
                 chatListItemMessage.gravity = Gravity.END
+                chatListItemMessage.setBackgroundColor(ContextCompat.getColor(context, R.color.purple_200))
 
             } else {
 
                 chatListItemMessage.gravity = Gravity.START
+                chatListItemMessage.setBackgroundColor(ContextCompat.getColor(context, R.color.teal_700))
 
             }
 
